@@ -1,4 +1,7 @@
 'use strict';
+const _ = require('lodash');
+const Q = require('q');
+
 
 var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
