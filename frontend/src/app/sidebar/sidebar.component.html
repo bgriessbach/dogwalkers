@@ -1,0 +1,18 @@
+<ul class="nav flex-column" id="sidebar">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active Schedules</a>
+    <div ng-if="schedules.length" *ngFor="let schedule of schedules" ng-hide="">
+      <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="{{ schedule.description }}">{{ schedule.name }}</button> 
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Dogs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Settings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Logout</a>
+  </li>
+</ul>
+
