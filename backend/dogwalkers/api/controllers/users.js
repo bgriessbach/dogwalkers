@@ -1,14 +1,35 @@
 const _ = require('lodash');
 const Q = require('q');
+const userinfo_c = ['walker_id', 'name', 'email', 'picture', 'creation_date'];
 
 
 module.exports = {
-	getUsers: getUsers
+	getUser: getUser,
+	createUser: createUser,
+	deleteUser: deleteUser,
+	getUserSchedules: getUserSchedules
 
 };
 
-function getUsers(req, res, next) {
+function createUser(req, res, next) {
+	let userinfo = req.swagger.params.userinfo.value;
+	res.json();
+}
+
+function deleteUser(req, res, next) {
 	let id = req.swagger.params.id.value;
 
 	res.json();
 };
+
+function getUser(req, res, next) {
+	let id = req.swagger.params.id.value;
+
+	res.json();
+};
+
+function getUserSchedules(req, res, next) {
+	let id = req.swagger.params.id.value;
+
+	res.json();	
+}
