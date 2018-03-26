@@ -224,7 +224,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /schedule/{id}/entries:
-    x-swagger-router-controller: schedule
+    x-swagger-router-controller: entries
     parameters:
       - name: id
         in: path
@@ -283,7 +283,132 @@ paths:
         default:
           description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse" 
+            $ref: "#/definitions/ErrorResponse"
+  /schedule/{id}/dogs:
+    x-swagger-router-controller: dogs
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: unique identifier of schedule
+        type: string
+    get:
+      operationId: getDogs
+      summary: get list of dogs
+      description: get list of all dogs for schedule
+      responses:
+        "200":
+          description: Success
+          schema: 
+            $ref: "#/definitions/allDogsSchema"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: addDog
+      summary: add a dog
+      description: add a new dog to schedule
+      parameters:
+        - name: dog
+          in: body
+          required: true
+          description: object of dog info
+          schema:
+            $ref: "#/definitions/DogSchema"
+      responses:
+        "200":
+          description: Success
+          schema: 
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateDog
+      summary: update dog
+      description: update a dog's information
+      parameters:
+        - name: dog
+          in: body
+          required: true
+          description: object of dog info
+          schema:
+            $ref: "#/definitions/DogSchema"
+      responses:
+        "200":
+          description: Success
+          schema: 
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: deleteDog
+      summary: delete dog
+      description: delete a dog's information
+      parameters:
+        - name: dog
+          in: body
+          required: true
+          description: object of dog info
+          schema:
+            $ref: "#/definitions/DogSchema"
+      responses:
+        "200":
+          description: Success
+          schema: 
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /auth0/login:
+    x-swagger-router-controller: auth0
+    parameters:
+      - name: auth0_id
+        in: query
+        required: true
+        description: auth0 identifier
+        type: string
+      - name: tennant
+        in: query
+        required: true
+        description: user pool
+        type: string
+    get:
+      operationId: getUserAuth0
+      summary: get info from auth0
+      description: use auth0 info to identify user
+      responses:
+        "200":
+          description: Success
+          schema: 
+            type: object
+            properties:
+              walker_id:
+                type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /attribute:
+    x-swagger-router-controller: attributes
+    get:
+      operationId: getAttributes
+      summary: get list of attributes
+      description: get list of all possible attributes
+      responses:
+        "200":
+          description: Success
+          schema: 
+            $ref: "#/definitions/AttributesSchema"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
@@ -326,6 +451,30 @@ definitions:
     properties:
       user_id:
         type: string
+  DogSchema:
+    type: object
+    properties:
+      dog_id:
+        type: string
+      name:
+        type: string
+      category:
+        type: string
+      comment:
+        type: [object, array, string, boolean, number]   
+  allDogsSchema:
+    type: array
+    items:
+      type: object
+      properties:
+        dog_id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+        comment:
+          type: [object, array, string, boolean, number]
   GetUserResponse:
     required:
       - name
@@ -415,4 +564,18 @@ definitions:
           type: boolean
         comment:
           type: string
+  AttributesSchema:
+    type: array
+    items:
+      type: object
+      properties:
+        attribute_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        default_value:
+          type: [array, object, boolean, string, number]
+      
     

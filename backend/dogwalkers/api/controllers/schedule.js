@@ -7,17 +7,8 @@ module.exports = {
 	deleteSchedule: deleteSchedule,
 	createSchedule: createSchedule,
 	getSettings: getSettings,
-	updateSettings: updateSettings,
-	getEntries: getEntries,
-	updateEntry: updateEntry,
-	createEntry: createEntry
+	updateSettings: updateSettings
 };
-
-function createEntry (req, res, next) {
-	let id = req.swagger.params.id.value;
-	let entry = req. swagger.params.entry.value;
-	res.json();		
-}
 
 function createSchedule (req, res, next) {
 	let schedule_info = req.swagger.params.schedule_info.value;
@@ -29,11 +20,6 @@ function deleteSchedule (req, res, next) {
 	res.json();	
 };
 
-function getEntries (req, res, next) {
-	let id = req.swagger.params.id.value;
-	res.json();		
-}
-
 function getSchedule (req, res, next) {
 	let id = req.swagger.params.id.value;
 	res.json();
@@ -44,12 +30,6 @@ function getSettings(req, res, next) {
 	let user = req.swagger.params.user.value;
 	res.json();
 };
-
-function updateEntry (req, res, next) {
-	let id = req.swagger.params.id.value;
-	let entry = req. swagger.params.entry.value;
-	res.json();	
-}
 
 function updateSchedule (req, res, next) {
 	let id = req.swagger.params.id.value;
