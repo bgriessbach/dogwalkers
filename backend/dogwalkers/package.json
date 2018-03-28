@@ -12,6 +12,7 @@
     "express": "^4.12.3",
     "pg-promise": "^8.2.2",
     "q": "^1.5.1",
+    "random-js": "^1.0.8",
     "request": "^2.85.0",
     "swagger-express-mw": "^0.1.0"
   },
